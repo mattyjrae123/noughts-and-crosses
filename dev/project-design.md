@@ -11,6 +11,7 @@
     - moves left (0 - 9)
     - winner (?)
     - game currently playing (boolean)
+    - GameBoard object
   - methods:
     - reset/restart game
     - end game (?)

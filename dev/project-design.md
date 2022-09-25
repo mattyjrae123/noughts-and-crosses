@@ -1,5 +1,5 @@
 # Project Plan
-## Javscript
+## Javascript
 - Encapsulate code into 2 areas.
   - Gameplay Management
   - Game Board/data

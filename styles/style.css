@@ -37,3 +37,9 @@ h1 {
 .gameboard-tile {
   background-color: chocolate;
 }
+
+#personal-links {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}

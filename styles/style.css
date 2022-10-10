@@ -50,6 +50,14 @@ footer {
   font-size: 1.4rem;
 }
 
+#github-repo-link {
+  text-decoration: none;
+}
+
+#github-repo-link:hover {
+  text-decoration: underline;
+}
+
 #personal-links {
   position: fixed;
   bottom: 15px;

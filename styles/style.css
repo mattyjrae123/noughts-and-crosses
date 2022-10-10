@@ -60,3 +60,7 @@ footer {
   transform: scale(1.1);
   transition: transform 0.1s;
 }
+
+#personal-links > a > img {
+  height: 50px;
+}

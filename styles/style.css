@@ -38,6 +38,17 @@ h1 {
   background-color: chocolate;
 }
 
+footer {
+  width: 100%;
+  padding-bottom: 25px;
+  
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+
+  font-size: 1.4rem;
+}
+
 #personal-links {
   position: fixed;
   bottom: 0;

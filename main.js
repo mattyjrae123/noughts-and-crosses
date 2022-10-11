@@ -1,7 +1,7 @@
 "use strict";
 
 /**
- * gameboard singleton
+ * board singleton
  * 
  * Stores gameboard tiles and has public and private methods for interacting
  * with the gameboard.
@@ -41,4 +41,14 @@ const board = (() => {
   }
   return {setTile,
           reset};
+})();
+
+/**
+ * manager singleton
+ * 
+ * Sets up game and manages interaction between two players. Keeps track of
+ * players turns and result etc.
+ */
+const manager = ((board) => {
+
 })();

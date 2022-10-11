@@ -48,6 +48,15 @@ h1 {
   border-radius: 5px;
 }
 
+.gameboard-tile:hover {
+  background-color: wheat;
+  transition: background-color 0.08s;
+}
+
+.gameboard-tile:active {
+  border: 2px solid black;
+}
+
 footer {
   width: 100%;
   padding-bottom: 25px;

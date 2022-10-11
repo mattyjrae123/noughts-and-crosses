@@ -17,6 +17,17 @@ const gameboard = (() => {
   }
 
   const setTile = (x, y, player) => {
+    if ((x < 0 || x > 2) || (y < 0 || y > 2)) {
+      return;
+    }
+
+    const tile = tiles[x][y];
+
+    if (player == null || tile.player != null) {
+      return;
+    }
+
+    tiles[x][y].player = player;
     tiles[x][y].element.textContent = player;
   };
 

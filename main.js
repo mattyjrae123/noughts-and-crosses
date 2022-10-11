@@ -65,4 +65,6 @@ const manager = (() => {
     _resetGame();
   });
 
+  _resetGame();
+
 })();

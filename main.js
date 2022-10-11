@@ -61,4 +61,8 @@ const manager = (() => {
     _currentPlayersTurn = 'X';
   };
 
+  document.querySelector('#reset-btn').addEventListener('click', () => {
+    _resetGame();
+  });
+
 })();

@@ -41,6 +41,18 @@ h1 {
   justify-content: center;
 }
 
+#reset-btn {
+  border: none;
+  border-radius: 50px;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.7rem;
+}
+
+#reset-btn:hover {
+  background-color: khaki;
+  transition: background-color 0.1s;
+}
+
 #gameboard {
   background-color: white;
   width: 500px;

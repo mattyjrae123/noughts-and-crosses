@@ -16,5 +16,9 @@ const gameboard = (() => {
     }
   }
 
-  return {tiles};
+  const setTile = (x, y, player) => {
+    tiles[x][y].element.textContent = player;
+  };
+
+  return {setTile};
 })();

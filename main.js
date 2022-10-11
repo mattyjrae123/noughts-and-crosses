@@ -6,7 +6,7 @@
  * Stores gameboard tiles and has public and private methods for interacting
  * with the gameboard.
  */
-const gameboard = (() => {
+const board = (() => {
   const tiles = [[], [], []];
 
   for (let x = 0; x < 3; x+=1) {

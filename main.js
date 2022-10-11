@@ -1,5 +1,11 @@
 "use strict";
 
+/**
+ * gameboard singleton
+ * 
+ * Stores gameboard tiles and has public and private methods for interacting
+ * with the gameboard.
+ */
 const gameboard = (() => {
   const tiles = [[], [], []];
 

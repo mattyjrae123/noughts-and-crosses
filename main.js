@@ -50,7 +50,7 @@ const board = (() => {
  * players turns and result etc.
  */
 const manager = (() => {
-  const _playing = false;
+  let _playing = false;
   let _movesRemaining = 0;
   let _currentPlayersTurn = undefined;
 

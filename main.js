@@ -31,5 +31,14 @@ const gameboard = (() => {
     tiles[x][y].element.textContent = player;
   };
 
-  return {setTile};
+  const reset = () => {
+    tiles.forEach((col) => {
+      col.forEach((tile) => {
+        tile.player = undefined;
+        tile.element.textContent = '';
+      });
+    });
+  }
+  return {setTile,
+          reset};
 })();

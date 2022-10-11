@@ -46,11 +46,15 @@ h1 {
 .gameboard-tile {
   background-color: chocolate;
   border-radius: 5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .gameboard-tile:hover {
   background-color: wheat;
-  transition: background-color 0.08s;
+  transition: background-color 0.05s;
 }
 
 .gameboard-tile:active {

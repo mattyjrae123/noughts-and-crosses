@@ -53,4 +53,12 @@ const manager = (() => {
   const _playing = false;
   let _movesRemaining = 0;
   let _currentPlayersTurn = undefined;
+
+  const _resetGame = () => {
+    board.reset();
+    _playing = true;
+    _movesRemaining = 9;
+    _currentPlayersTurn = 'X';
+  };
+
 })();

@@ -42,6 +42,7 @@ const board = (() => {
       });
     });
   }
+  
   return {
     setTile,
     getTile,

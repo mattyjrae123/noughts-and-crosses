@@ -33,6 +33,10 @@ const board = (() => {
     _tiles[x][y].element.textContent = player;
   };
 
+  const getTile = (x, y) => {
+    return _tiles[x][y].player;
+  };
+
   const reset = () => {
     _tiles.forEach((col) => {
       col.forEach((tile) => {

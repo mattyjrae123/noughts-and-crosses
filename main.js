@@ -65,6 +65,17 @@ const manager = (() => {
     _resetGame();
   });
 
+  document.querySelectorAll('.gameboard-tile')
+          .forEach((tile) => {
+            tile.addEventListener('click', (e) => {
+              const col = e.target.getAttribute('data-col');
+              const row = e.target.getAttribute('data-row');
+              
+              board.setTile(col, row, _currentPlayersTurn);
+            });
+          });
+
+
   _resetGame();
 
 })();

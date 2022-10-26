@@ -7,7 +7,7 @@ import { board } from "./board.js";
  * players turns and result etc.
  */
 
- const manager = ((gameBoard = board) => {
+const manager = ((gameBoard = board) => {
   let _playing = false;
   let _movesRemaining = 0;
   let _currentPlayersTurn = undefined;
@@ -27,24 +27,26 @@ import { board } from "./board.js";
     }
   }
 
-  document.querySelector('#reset-btn').addEventListener('click', () => {
-    _resetGame();
-  });
+  const _processClick = (e) => {
+    const col = e.target.getAttribute('data-col');
+    const row = e.target.getAttribute('data-row');
 
-  const tiles = document.querySelectorAll('.gameboard-tile');
+    if (board.getTile(col, row) !== undefined) {
+      return;
+    }
+    board.setTile(col, row, _currentPlayersTurn);
+    _changePlayer();
+  };
 
-  tiles.forEach((tile) => {
-    tile.addEventListener('click', (e) => {
-      const col = e.target.getAttribute('data-col');
-      const row = e.target.getAttribute('data-row');
+  document.querySelector('#reset-btn')
+          .addEventListener('click', () => {
+            _resetGame();
+          });
 
-      if (board.getTile(col, row) !== undefined) {
-        return;
-      }
-      board.setTile(col, row, _currentPlayersTurn);
-      _changePlayer();
-    });
-  });
+  document.querySelectorAll('.gameboard-tile')
+          .forEach((tile) => {
+            tile.addEventListener('click', _processClick);
+          });
 
 })();
 

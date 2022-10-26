@@ -68,6 +68,8 @@ h1 {
 .gameboard-tile {
   background-color: chocolate;
   border-radius: 5px;
+  font-size: 5rem;
+  font-weight: 300;
 
   display: flex;
   align-items: center;

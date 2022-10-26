@@ -25,10 +25,6 @@ const board = (() => {
 
     const tile = _tiles[x][y];
 
-    if (player == null || tile.player != null) {
-      return;
-    }
-
     _tiles[x][y].player = player;
     _tiles[x][y].element.textContent = player;
   };
@@ -47,6 +43,7 @@ const board = (() => {
   }
   return {
     setTile,
+    getTile,
     reset
   };
 })();
@@ -88,6 +85,9 @@ const manager = (() => {
       const col = e.target.getAttribute('data-col');
       const row = e.target.getAttribute('data-row');
 
+      if (board.getTile(col, row) !== undefined) {
+        return;
+      }
       board.setTile(col, row, _currentPlayersTurn);
       _changePlayer();
     });

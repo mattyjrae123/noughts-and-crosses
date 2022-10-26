@@ -23,8 +23,6 @@ const board = (() => {
       return;
     }
 
-    const tile = _tiles[x][y];
-
     _tiles[x][y].player = player;
     _tiles[x][y].element.textContent = player;
   };

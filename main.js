@@ -9,10 +9,12 @@
 const board = (() => {
   const _tiles = [[], [], []];
 
-  for (let x = 0; x < 3; x+=1) {
-    for (let y = 0; y < 3; y+=1) {
-      _tiles[x][y] = {element: document.querySelector(`.gameboard-tile[data-col="${x}"][data-row="${y}"]`),
-                     player: undefined};
+  for (let x = 0; x < 3; x += 1) {
+    for (let y = 0; y < 3; y += 1) {
+      _tiles[x][y] = {
+        element: document.querySelector(`.gameboard-tile[data-col="${x}"][data-row="${y}"]`),
+        player: undefined
+      };
     }
   }
 
@@ -39,8 +41,10 @@ const board = (() => {
       });
     });
   }
-  return {setTile,
-          reset};
+  return {
+    setTile,
+    reset
+  };
 })();
 
 /**
@@ -65,16 +69,16 @@ const manager = (() => {
     _resetGame();
   });
 
-  document.querySelectorAll('.gameboard-tile')
-          .forEach((tile) => {
-            tile.addEventListener('click', (e) => {
-              const col = e.target.getAttribute('data-col');
-              const row = e.target.getAttribute('data-row');
-              
-              board.setTile(col, row, _currentPlayersTurn);
-            });
-          });
+  const tiles = document.querySelectorAll('.gameboard-tile');
 
+  tiles.forEach((tile) => {
+    tile.addEventListener('click', (e) => {
+      const col = e.target.getAttribute('data-col');
+      const row = e.target.getAttribute('data-row');
+
+      board.setTile(col, row, _currentPlayersTurn);
+    });
+  });
 
   _resetGame();
 

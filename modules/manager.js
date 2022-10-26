@@ -46,8 +46,6 @@ import { board } from "./board.js";
     });
   });
 
-  _resetGame();
-
 })();
 
 export { manager };

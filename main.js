@@ -65,6 +65,14 @@ const manager = (() => {
     _currentPlayersTurn = 'X';
   };
 
+  const _changePlayer = () => {
+    if (_currentPlayersTurn === 'X') {
+      _currentPlayersTurn = 'O';
+    } else {
+      _currentPlayersTurn = 'X';
+    }
+  }
+
   document.querySelector('#reset-btn').addEventListener('click', () => {
     _resetGame();
   });
@@ -77,6 +85,7 @@ const manager = (() => {
       const row = e.target.getAttribute('data-row');
 
       board.setTile(col, row, _currentPlayersTurn);
+      _changePlayer();
     });
   });
 

@@ -35,6 +35,19 @@ const manager = ((gameBoard = board) => {
       return;
     }
     board.setTile(col, row, _currentPlayersTurn);
+    //_checkWinner();
+    // if winning turn
+    //    display result
+    //    set game playing to false
+    //    set moves remaining to 0
+    // else
+    //    check turns remaining
+    //    if <= 0
+    //      set game playing to false etc
+    //      display result is draw
+    //    else
+    //      decrement turns remaining
+    //      _changePlayer();
     _changePlayer();
   };
 

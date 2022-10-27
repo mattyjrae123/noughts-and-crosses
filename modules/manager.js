@@ -17,7 +17,7 @@ const manager = ((gameBoard = board) => {
     board.reset();
     _playing = true;
     _movesRemaining = 9;
-    currPlayer = 'X';
+    currPlayer = 'x';
     _displayPlayer();
   };
 
@@ -27,10 +27,10 @@ const manager = ((gameBoard = board) => {
   };
 
   const _changePlayer = () => {
-    if (currPlayer === 'X') {
-      currPlayer = 'O';
+    if (currPlayer === 'x') {
+      currPlayer = 'o';
     } else {
-      currPlayer = 'X';
+      currPlayer = 'x';
     }
   }
 

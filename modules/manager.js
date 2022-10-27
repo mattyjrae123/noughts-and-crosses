@@ -10,13 +10,15 @@ import { board } from "./board.js";
 const manager = ((gameBoard = board) => {
   let _playing = false;
   let _movesRemaining = 0;
-  let _currentPlayersTurn = undefined;
+  let currPlayer = undefined;
+  let _gameDisplay = document.querySelector('#gameboard-display');
 
   const resetGame = () => {
     board.reset();
     _playing = true;
     _movesRemaining = 9;
-    _currentPlayersTurn = 'X';
+    currPlayer = 'X';
+    _displayPlayer();
   };
 
   const _stopGame = () => {
@@ -25,12 +27,16 @@ const manager = ((gameBoard = board) => {
   };
 
   const _changePlayer = () => {
-    if (_currentPlayersTurn === 'X') {
-      _currentPlayersTurn = 'O';
+    if (currPlayer === 'X') {
+      currPlayer = 'O';
     } else {
-      _currentPlayersTurn = 'X';
+      currPlayer = 'X';
     }
   }
+
+  const _displayPlayer = () => {
+    _gameDisplay.textContent = `Player ${currPlayer}'s turn`;
+  };
 
   const _checkWinner = (col, row) => {
     // check column
@@ -68,28 +74,22 @@ const manager = ((gameBoard = board) => {
       return;
     }
 
-    board.setTile(col, row, _currentPlayersTurn);
+    board.setTile(col, row, currPlayer);
     _movesRemaining -= 1;
+
+    if (_checkWinner(col, row)) {
+      _stopGame();
+      _gameDisplay.textContent = `Player ${currPlayer} you beauty! You won!`;
+      return;
+    }
 
     if (_movesRemaining <= 0) {
       _stopGame();
+      _gameDisplay.textContent = "Game over! It's a draw!";
     }
-    if (_checkWinner(col, row)) {
-      _stopGame();
-    }
-    // if winning turn
-    //    display result
-    //    set game playing to false
-    //    set moves remaining to 0
-    // else
-    //    check turns remaining
-    //    if <= 0
-    //      set game playing to false etc
-    //      display result is draw
-    //    else
-    //      decrement turns remaining
-    //      _changePlayer();
+    
     _changePlayer();
+    _displayPlayer();
   };
 
   document.querySelector('#reset-btn')

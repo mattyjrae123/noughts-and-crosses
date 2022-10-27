@@ -33,6 +33,10 @@ const manager = ((gameBoard = board) => {
   }
 
   const _processClick = (e) => {
+    if (!_playing) {
+      return;
+    }
+
     const col = e.target.getAttribute('data-col');
     const row = e.target.getAttribute('data-row');
 
@@ -40,6 +44,11 @@ const manager = ((gameBoard = board) => {
       return;
     }
     board.setTile(col, row, _currentPlayersTurn);
+    _movesRemaining -= 1;
+
+    if (_movesRemaining <= 0) {
+      _stopGame();
+    }
     //_checkWinner();
     // if winning turn
     //    display result

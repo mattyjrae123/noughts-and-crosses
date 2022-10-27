@@ -32,6 +32,30 @@ const manager = ((gameBoard = board) => {
     }
   }
 
+  const _checkWinner = (col, row) => {
+    // check column
+    if (board.getTile(col, 0) === board.getTile(col, 1) && board.getTile(col, 0) === board.getTile(col, 2)) {
+      return true;
+    }
+
+    // check row
+    if (board.getTile(0, row) === board.getTile(1, row) && board.getTile(0, row) === board.getTile(2, row)) {
+      return true;
+    }
+
+    // check diagonal from top-left
+    if (board.getTile(0, 0) === board.getTile(1, 1) && board.getTile(0, 0) === board.getTile(2, 2)) {
+      return board.getTile(0, 0) !== undefined;
+    }
+
+    // check diagonal from bottom-left
+    if (board.getTile(0, 2) === board.getTile(1, 1) && board.getTile(0, 2) === board.getTile(2, 0)) {
+     return board.getTile(0, 2) !== undefined;
+    }
+
+    return false;
+  };
+
   const _processClick = (e) => {
     if (!_playing) {
       return;
@@ -43,13 +67,16 @@ const manager = ((gameBoard = board) => {
     if (board.getTile(col, row) !== undefined) {
       return;
     }
+
     board.setTile(col, row, _currentPlayersTurn);
     _movesRemaining -= 1;
 
     if (_movesRemaining <= 0) {
       _stopGame();
     }
-    //_checkWinner();
+    if (_checkWinner(col, row)) {
+      _stopGame();
+    }
     // if winning turn
     //    display result
     //    set game playing to false

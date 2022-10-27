@@ -75,6 +75,8 @@ const manager = ((gameBoard = board) => {
             tile.addEventListener('click', _processClick);
           });
 
+  _resetGame();
+
 })();
 
 export { manager };

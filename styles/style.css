@@ -41,6 +41,7 @@ h1 {
 #gameboard-display, #gameboard-menu {
   height: 100px;
   margin: 10px 0;
+  font-size: 1.5rem;
 
   display: flex;
   align-items: center;

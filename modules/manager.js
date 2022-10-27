@@ -19,6 +19,11 @@ const manager = ((gameBoard = board) => {
     _currentPlayersTurn = 'X';
   };
 
+  const _stopGame = () => {
+    _playing = false;
+    _movesRemaining = 0;
+  };
+
   const _changePlayer = () => {
     if (_currentPlayersTurn === 'X') {
       _currentPlayersTurn = 'O';

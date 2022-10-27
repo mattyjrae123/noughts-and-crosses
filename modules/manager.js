@@ -35,7 +35,7 @@ const manager = ((gameBoard = board) => {
   }
 
   const _displayPlayer = () => {
-    _gameDisplay.textContent = `Player ${currPlayer}'s turn`;
+    _gameDisplay.textContent = `${currPlayer}'s turn`;
   };
 
   const _checkWinner = (col, row) => {

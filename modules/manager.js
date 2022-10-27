@@ -12,7 +12,7 @@ const manager = ((gameBoard = board) => {
   let _movesRemaining = 0;
   let _currentPlayersTurn = undefined;
 
-  const _resetGame = () => {
+  const resetGame = () => {
     board.reset();
     _playing = true;
     _movesRemaining = 9;
@@ -67,7 +67,7 @@ const manager = ((gameBoard = board) => {
 
   document.querySelector('#reset-btn')
           .addEventListener('click', () => {
-            _resetGame();
+            resetGame();
           });
 
   document.querySelectorAll('.gameboard-tile')
@@ -75,7 +75,7 @@ const manager = ((gameBoard = board) => {
             tile.addEventListener('click', _processClick);
           });
 
-  _resetGame();
+  return {resetGame};
 
 })();
 

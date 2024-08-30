@@ -21,6 +21,10 @@
     _tiles[row][col] = player;
   };
 
+  const removeTile = (row, col) => {
+    _tiles[row][col] = undefined;
+  };
+
   const getTile = (row, col) => {
     if ((row < 0 || row > 2) || (col < 0 || col > 2)) {
       return;
@@ -89,6 +93,7 @@
   
   return {
     setTile,
+    removeTile,
     getTile,
     reset,
     refreshBoardUI,

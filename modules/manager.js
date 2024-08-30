@@ -47,7 +47,7 @@ const manager = (() => {
     board.refreshBoardUI();
     _movesRemaining--;
 
-    if (_checkWinner(row, col)) {
+    if (board.gameWon(row, col)) {
       _stopGame();
       _gameDisplay.textContent = `Player ${currPlayer.player} you beauty! You won!`;
       return;

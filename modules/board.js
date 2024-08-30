@@ -58,13 +58,38 @@
 
     return moves;
   };
+
+  const gameWon = (row, col) => {
+    // check column
+    if (board.getTile(0, col) === board.getTile(1, col) && board.getTile(0, col) === board.getTile(2, col)) {
+      return true;
+    }
+
+    // check row
+    if (board.getTile(row, 0) === board.getTile(row, 1) && board.getTile(row, 0) === board.getTile(row, 2)) {
+      return true;
+    }
+
+    // check diagonal from top-left
+    if (board.getTile(0, 0) === board.getTile(1, 1) && board.getTile(0, 0) === board.getTile(2, 2)) {
+      return board.getTile(0, 0) !== undefined;
+    }
+
+    // check diagonal from bottom-left
+    if (board.getTile(0, 2) === board.getTile(1, 1) && board.getTile(0, 2) === board.getTile(2, 0)) {
+     return board.getTile(0, 2) !== undefined;
+    }
+
+    return false;
+  };
   
   return {
     setTile,
     getTile,
     reset,
     refreshBoardUI,
-    getPossibleMoves
+    getPossibleMoves,
+    gameWon
   };
 })();
 

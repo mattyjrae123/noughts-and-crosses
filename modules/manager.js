@@ -45,7 +45,8 @@ const manager = (() => {
     board.setTile(row, col, currPlayer.player);
     board.refreshBoardUI();
 
-    if (board.gameWon(row, col)) {
+    // if (board.gameWon(row, col)) {
+    if (board.gameWon()) {
       _stopGame();
       _gameDisplay.textContent = `Player ${currPlayer.player} you beauty! You won!`;
       return;

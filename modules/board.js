@@ -63,25 +63,37 @@
     return moves;
   };
 
-  const gameWon = (row, col) => {
-    // check column
-    if (board.getTile(0, col) === board.getTile(1, col) && board.getTile(0, col) === board.getTile(2, col)) {
-      return true;
-    }
+  const gameWon = () => {
+    for (let i = 0; i < _tiles.length; i++) {
+      // check rows
+      if (getTile(i, 0) === getTile(i, 1) && getTile(i, 0) === getTile(i, 2)) {
+        console.log(`Row: ${i} matched`);
+        if (_tiles[i][0] !== undefined) {
+          return true;
+        }
+      }
 
-    // check row
-    if (board.getTile(row, 0) === board.getTile(row, 1) && board.getTile(row, 0) === board.getTile(row, 2)) {
-      return true;
+      // check columns
+      if (getTile(0, i) === getTile(1, i) && getTile(0, i) === getTile(2, i)) {
+        console.log(`Column: ${i} matched`);
+        if (_tiles[0][i] !== undefined) {
+          return true;
+        }
+      }
     }
 
     // check diagonal from top-left
     if (board.getTile(0, 0) === board.getTile(1, 1) && board.getTile(0, 0) === board.getTile(2, 2)) {
-      return board.getTile(0, 0) !== undefined;
+      if (board.getTile(0,0) !== undefined) {
+        return true;
+      }
     }
 
     // check diagonal from bottom-left
     if (board.getTile(0, 2) === board.getTile(1, 1) && board.getTile(0, 2) === board.getTile(2, 0)) {
-     return board.getTile(0, 2) !== undefined;
+      if (board.getTile(0, 2) !== undefined) {
+        return true;
+      }
     }
 
     return false;

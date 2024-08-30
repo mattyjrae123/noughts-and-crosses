@@ -6,7 +6,7 @@
  */
 const AIAgent = () => {
   const getMove = (board) => {
-    console.log(`AIAgent.getMove()`);
+    console.log(board.getPossibleMoves());
   };
   
   return {

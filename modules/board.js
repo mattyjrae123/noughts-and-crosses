@@ -44,12 +44,27 @@
       }
     }
   };
+
+  const getPossibleMoves = () => {
+    const moves = [];
+
+    for (let row = 0; row < +_tiles.length; row++) {
+      for (let col = 0; col < _tiles[0].length; col++) {
+        if (_tiles[row][col] == undefined) {
+          moves.push([row, col]);
+        }
+      }
+    }
+
+    return moves;
+  };
   
   return {
     setTile,
     getTile,
     reset,
-    refreshBoardUI
+    refreshBoardUI,
+    getPossibleMoves
   };
 })();
 

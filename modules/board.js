@@ -9,10 +9,7 @@
 
   for (let x = 0; x < 3; x += 1) {
     for (let y = 0; y < 3; y += 1) {
-      _tiles[x][y] = {
-        element: document.querySelector(`.gameboard-tile[data-col="${x}"][data-row="${y}"]`),
-        player: undefined
-      };
+      _tiles[x][y] = undefined;
     }
   }
 
@@ -21,30 +18,45 @@
       return;
     }
 
-    _tiles[x][y].player = player;
-    _tiles[x][y].element.textContent = player;
+    _tiles[x][y] = player;
+    // _tiles[x][y].element.textContent = player;
   };
 
   const getTile = (x, y) => {
     if ((x < 0 || x > 2) || (y < 0 || y > 2)) {
       return;
     }
-    return _tiles[x][y].player;
+    return _tiles[x][y];
   };
 
   const reset = () => {
-    _tiles.forEach((col) => {
-      col.forEach((tile) => {
-        tile.player = undefined;
-        tile.element.textContent = '';
-      });
-    });
+    for (let row = 0; row < +_tiles.length; row++) {
+      for (let col = 0; col < _tiles[0].length; col++) {
+        _tiles[row][col] = undefined;
+      }
+    }
+    // _tiles.forEach((col) => {
+    //   col.forEach((tile) => {
+    //     tile.player = undefined;
+    //     tile.element.textContent = '';
+    //   });
+    // });
   }
+
+  const refreshBoardUI = () => {
+    for (let row = 0; row < 3; row += 1) {
+      for (let col = 0; col < 3; col += 1) {
+        const player = _tiles[row][col];
+        document.querySelector(`.gameboard-tile[data-col="${row}"][data-row="${col}"]`).textContent = player;
+      }
+    }
+  };
   
   return {
     setTile,
     getTile,
-    reset
+    reset,
+    refreshBoardUI
   };
 })();
 

@@ -15,6 +15,7 @@ const manager = ((gameBoard = board) => {
 
   const resetGame = () => {
     board.reset();
+    board.refreshBoardUI();
     _playing = true;
     _movesRemaining = 9;
     currPlayer = 'x';
@@ -75,6 +76,7 @@ const manager = ((gameBoard = board) => {
     }
 
     board.setTile(col, row, currPlayer);
+    board.refreshBoardUI();
     _movesRemaining -= 1;
 
     if (_checkWinner(col, row)) {

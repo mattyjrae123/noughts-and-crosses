@@ -19,7 +19,6 @@
     }
 
     _tiles[x][y] = player;
-    // _tiles[x][y].element.textContent = player;
   };
 
   const getTile = (x, y) => {
@@ -35,12 +34,6 @@
         _tiles[row][col] = undefined;
       }
     }
-    // _tiles.forEach((col) => {
-    //   col.forEach((tile) => {
-    //     tile.player = undefined;
-    //     tile.element.textContent = '';
-    //   });
-    // });
   }
 
   const refreshBoardUI = () => {

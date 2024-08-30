@@ -13,13 +13,15 @@ const manager = ((gameBoard = board) => {
   let _movesRemaining = 0;
   let currPlayer = undefined;
   let _gameDisplay = document.querySelector('#gameboard-display');
+  const PLAYER_1 = "x";
+  const PLAYER_2 = "o";
 
   const resetGame = () => {
     board.reset();
     board.refreshBoardUI();
     _playing = true;
     _movesRemaining = 9;
-    currPlayer = 'x';
+    currPlayer = PLAYER_1;
     _displayPlayer();
   };
 
@@ -29,10 +31,10 @@ const manager = ((gameBoard = board) => {
   };
 
   const _changePlayer = () => {
-    if (currPlayer === 'x') {
-      currPlayer = 'o';
+    if (currPlayer === PLAYER_1) {
+      currPlayer = PLAYER_2;
     } else {
-      currPlayer = 'x';
+      currPlayer = PLAYER_1;
     }
   }
 

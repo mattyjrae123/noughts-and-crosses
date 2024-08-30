@@ -8,7 +8,7 @@ import { AIAgent } from "./AIAgent.js";
  * players turns and result etc.
  */
 
-const manager = ((gameBoard = board) => {
+const manager = (() => {
   let _playing = false;
   let _movesRemaining = 0;
   let currPlayer = undefined;
@@ -20,7 +20,7 @@ const manager = ((gameBoard = board) => {
 
   const PLAYER_2 = {
     player: "o",
-    isAIAgent: false
+    isAIAgent: true
   };
 
   const resetGame = () => {
@@ -28,26 +28,41 @@ const manager = ((gameBoard = board) => {
     board.refreshBoardUI();
     _playing = true;
     _movesRemaining = 9;
-    // currPlayer = PLAYER_1;
-    // _displayPlayer();
-    _setPlayersMove(PLAYER_1);
+    _setPlayersTurn(PLAYER_1);
   };
 
-  const _setPlayersMove = (player) => {
+  const _setPlayersTurn = (player) => {
     currPlayer = player;
     _displayPlayer();
 
     if (currPlayer.isAIAgent) {
       console.log("IS AI AGENT");
-      const move = currPlayer.getMove(board);
-      board.setTile(move[0], move[1], currPlayer.player);
-      board.refreshBoardUI();
+      const move = AIAgent.getMove(board);
+      _setMove(move[0], move[1]);
+    }
+  };
 
-      if (currPlayer === PLAYER_1) {
-        _setPlayersMove(PLAYER_2);
-      } else {
-        _setPlayersMove(PLAYER_1);
-      }
+  const _setMove = (row, col) => {
+    board.setTile(row, col, currPlayer.player);
+    board.refreshBoardUI();
+    _movesRemaining--;
+
+    if (_checkWinner(row, col)) {
+      _stopGame();
+      _gameDisplay.textContent = `Player ${currPlayer.player} you beauty! You won!`;
+      return;
+    }
+
+    if (_movesRemaining <= 0) {
+      _stopGame();
+      _gameDisplay.textContent = "Game over! It's a draw!";
+      return;
+    }
+    
+    if (currPlayer === PLAYER_1) {
+      _setPlayersTurn(PLAYER_2);
+    } else {
+      _setPlayersTurn(PLAYER_1);
     }
   };
 
@@ -56,26 +71,18 @@ const manager = ((gameBoard = board) => {
     _movesRemaining = 0;
   };
 
-  const _changePlayer = () => {
-    if (currPlayer === PLAYER_1) {
-      currPlayer = PLAYER_2;
-    } else {
-      currPlayer = PLAYER_1;
-    }
-  }
-
   const _displayPlayer = () => {
     _gameDisplay.textContent = `${currPlayer.player}'s turn`;
   };
 
-  const _checkWinner = (col, row) => {
+  const _checkWinner = (row, col) => {
     // check column
-    if (board.getTile(col, 0) === board.getTile(col, 1) && board.getTile(col, 0) === board.getTile(col, 2)) {
+    if (board.getTile(0, col) === board.getTile(1, col) && board.getTile(0, col) === board.getTile(2, col)) {
       return true;
     }
 
     // check row
-    if (board.getTile(0, row) === board.getTile(1, row) && board.getTile(0, row) === board.getTile(2, row)) {
+    if (board.getTile(row, 0) === board.getTile(row, 1) && board.getTile(row, 0) === board.getTile(row, 2)) {
       return true;
     }
 
@@ -93,34 +100,22 @@ const manager = ((gameBoard = board) => {
   };
 
   const _processClick = (e) => {
+    if (currPlayer.isAIAgent) {
+      return;
+    }
+
     if (!_playing) {
       return;
     }
 
-    const col = e.target.getAttribute('data-col');
     const row = e.target.getAttribute('data-row');
+    const col = e.target.getAttribute('data-col');
 
-    if (board.getTile(col, row) !== undefined) {
+    if (board.getTile(row, col) !== undefined) {
       return;
     }
 
-    board.setTile(col, row, currPlayer.player);
-    board.refreshBoardUI();
-    _movesRemaining -= 1;
-
-    if (_checkWinner(col, row)) {
-      _stopGame();
-      _gameDisplay.textContent = `Player ${currPlayer} you beauty! You won!`;
-      return;
-    }
-
-    if (_movesRemaining <= 0) {
-      _stopGame();
-      _gameDisplay.textContent = "Game over! It's a draw!";
-    }
-    
-    _changePlayer();
-    _displayPlayer();
+    _setMove(row, col);
   };
 
   document.querySelector('#reset-btn')
@@ -133,7 +128,9 @@ const manager = ((gameBoard = board) => {
             tile.addEventListener('click', _processClick);
           });
 
-  return {resetGame};
+  return {
+    resetGame
+  };
 
 })();
 

@@ -13,19 +13,19 @@
     }
   }
 
-  const setTile = (x, y, player) => {
-    if ((x < 0 || x > 2) || (y < 0 || y > 2)) {
+  const setTile = (row, col, player) => {
+    if ((row < 0 || row > 2) || (col < 0 || col > 2)) {
       return;
     }
 
-    _tiles[x][y] = player;
+    _tiles[row][col] = player;
   };
 
-  const getTile = (x, y) => {
-    if ((x < 0 || x > 2) || (y < 0 || y > 2)) {
+  const getTile = (row, col) => {
+    if ((row < 0 || row > 2) || (col < 0 || col > 2)) {
       return;
     }
-    return _tiles[x][y];
+    return _tiles[row][col];
   };
 
   const reset = () => {
@@ -40,7 +40,7 @@
     for (let row = 0; row < 3; row += 1) {
       for (let col = 0; col < 3; col += 1) {
         const player = _tiles[row][col];
-        document.querySelector(`.gameboard-tile[data-col="${row}"][data-row="${col}"]`).textContent = player;
+        document.querySelector(`.gameboard-tile[data-col="${col}"][data-row="${row}"]`).textContent = player;
       }
     }
   };

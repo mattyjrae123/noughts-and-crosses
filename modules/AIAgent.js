@@ -4,14 +4,14 @@
  * Class represents an AI player, which implements the minimax algorithm to
  * get the AI players move.
  */
-const AIAgent = () => {
+const AIAgent = (() => {
   const getMove = (board) => {
-    console.log(board.getPossibleMoves());
+    return board.getPossibleMoves()[0];
   };
   
   return {
     getMove
   };
-};
+})();
 
 export { AIAgent };

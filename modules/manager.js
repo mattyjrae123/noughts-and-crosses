@@ -10,7 +10,6 @@ import { AIAgent } from "./AIAgent.js";
 
 const manager = (() => {
   let _playing = false;
-  let _movesRemaining = 0;
   let currPlayer = undefined;
   let _gameDisplay = document.querySelector('#gameboard-display');
   const PLAYER_1 = {
@@ -27,7 +26,6 @@ const manager = (() => {
     board.reset();
     board.refreshBoardUI();
     _playing = true;
-    _movesRemaining = 9;
     _setPlayersTurn(PLAYER_1);
   };
 
@@ -45,7 +43,6 @@ const manager = (() => {
   const _setMove = (row, col) => {
     board.setTile(row, col, currPlayer.player);
     board.refreshBoardUI();
-    _movesRemaining--;
 
     if (board.gameWon(row, col)) {
       _stopGame();
@@ -53,7 +50,7 @@ const manager = (() => {
       return;
     }
 
-    if (_movesRemaining <= 0) {
+    if (!board.hasMovesRemaining) {
       _stopGame();
       _gameDisplay.textContent = "Game over! It's a draw!";
       return;
@@ -68,35 +65,10 @@ const manager = (() => {
 
   const _stopGame = () => {
     _playing = false;
-    _movesRemaining = 0;
   };
 
   const _displayPlayer = () => {
     _gameDisplay.textContent = `${currPlayer.player}'s turn`;
-  };
-
-  const _checkWinner = (row, col) => {
-    // check column
-    if (board.getTile(0, col) === board.getTile(1, col) && board.getTile(0, col) === board.getTile(2, col)) {
-      return true;
-    }
-
-    // check row
-    if (board.getTile(row, 0) === board.getTile(row, 1) && board.getTile(row, 0) === board.getTile(row, 2)) {
-      return true;
-    }
-
-    // check diagonal from top-left
-    if (board.getTile(0, 0) === board.getTile(1, 1) && board.getTile(0, 0) === board.getTile(2, 2)) {
-      return board.getTile(0, 0) !== undefined;
-    }
-
-    // check diagonal from bottom-left
-    if (board.getTile(0, 2) === board.getTile(1, 1) && board.getTile(0, 2) === board.getTile(2, 0)) {
-     return board.getTile(0, 2) !== undefined;
-    }
-
-    return false;
   };
 
   const _processClick = (e) => {

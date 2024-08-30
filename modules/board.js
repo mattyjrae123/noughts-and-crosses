@@ -82,6 +82,10 @@
 
     return false;
   };
+
+  const hasMovesRemaining = () => {
+    return getPossibleMoves().length > 0;
+  };
   
   return {
     setTile,
@@ -89,7 +93,8 @@
     reset,
     refreshBoardUI,
     getPossibleMoves,
-    gameWon
+    gameWon,
+    hasMovesRemaining
   };
 })();
 

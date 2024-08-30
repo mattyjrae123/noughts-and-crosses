@@ -9,12 +9,6 @@ import { AIAgent } from "./AIAgent.js";
  */
 
 const manager = ((gameBoard = board) => {
-  // testing ai agent
-  let ai1 = AIAgent(1);
-  let ai2 = AIAgent(2);
-  ai1.getMove();
-  ai2.getMove();
-  // end test
   let _playing = false;
   let _movesRemaining = 0;
   let currPlayer = undefined;

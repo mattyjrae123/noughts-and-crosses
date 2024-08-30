@@ -35,8 +35,7 @@ const manager = (() => {
     _gameDisplay.textContent = `${currPlayer.player}'s turn`;
 
     if (currPlayer.isAIAgent) {
-      console.log("IS AI AGENT");
-      const move = AIAgent.getMove(board);
+      const move = AIAgent.getMove(board, currPlayer.player);
       _setMove(move[0], move[1]);
     }
   };
@@ -45,7 +44,6 @@ const manager = (() => {
     board.setTile(row, col, currPlayer.player);
     board.refreshBoardUI();
 
-    // if (board.gameWon(row, col)) {
     if (board.gameWon()) {
       _stopGame();
       _gameDisplay.textContent = `Player ${currPlayer.player} you beauty! You won!`;

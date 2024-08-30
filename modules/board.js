@@ -67,7 +67,6 @@
     for (let i = 0; i < _tiles.length; i++) {
       // check rows
       if (getTile(i, 0) === getTile(i, 1) && getTile(i, 0) === getTile(i, 2)) {
-        console.log(`Row: ${i} matched`);
         if (_tiles[i][0] !== undefined) {
           return true;
         }
@@ -75,7 +74,6 @@
 
       // check columns
       if (getTile(0, i) === getTile(1, i) && getTile(0, i) === getTile(2, i)) {
-        console.log(`Column: ${i} matched`);
         if (_tiles[0][i] !== undefined) {
           return true;
         }

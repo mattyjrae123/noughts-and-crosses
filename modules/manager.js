@@ -12,6 +12,7 @@ const manager = (() => {
   let _playing = false;
   let currPlayer = undefined;
   let _gameDisplay = document.querySelector('#gameboard-display');
+  
   const PLAYER_1 = {
     player: "x",
     isAIAgent: false
@@ -31,7 +32,7 @@ const manager = (() => {
 
   const _setPlayersTurn = (player) => {
     currPlayer = player;
-    _displayPlayer();
+    _gameDisplay.textContent = `${currPlayer.player}'s turn`;
 
     if (currPlayer.isAIAgent) {
       console.log("IS AI AGENT");
@@ -65,10 +66,6 @@ const manager = (() => {
 
   const _stopGame = () => {
     _playing = false;
-  };
-
-  const _displayPlayer = () => {
-    _gameDisplay.textContent = `${currPlayer.player}'s turn`;
   };
 
   const _processClick = (e) => {

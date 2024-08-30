@@ -13,16 +13,42 @@ const manager = ((gameBoard = board) => {
   let _movesRemaining = 0;
   let currPlayer = undefined;
   let _gameDisplay = document.querySelector('#gameboard-display');
-  const PLAYER_1 = "x";
-  const PLAYER_2 = "o";
+  const PLAYER_1 = {
+    player: "x",
+    isAIAgent: false
+  };
+
+  const PLAYER_2 = {
+    player: "o",
+    isAIAgent: false
+  };
 
   const resetGame = () => {
     board.reset();
     board.refreshBoardUI();
     _playing = true;
     _movesRemaining = 9;
-    currPlayer = PLAYER_1;
+    // currPlayer = PLAYER_1;
+    // _displayPlayer();
+    _setPlayersMove(PLAYER_1);
+  };
+
+  const _setPlayersMove = (player) => {
+    currPlayer = player;
     _displayPlayer();
+
+    if (currPlayer.isAIAgent) {
+      console.log("IS AI AGENT");
+      const move = currPlayer.getMove(board);
+      board.setTile(move[0], move[1], currPlayer.player);
+      board.refreshBoardUI();
+
+      if (currPlayer === PLAYER_1) {
+        _setPlayersMove(PLAYER_2);
+      } else {
+        _setPlayersMove(PLAYER_1);
+      }
+    }
   };
 
   const _stopGame = () => {
@@ -39,7 +65,7 @@ const manager = ((gameBoard = board) => {
   }
 
   const _displayPlayer = () => {
-    _gameDisplay.textContent = `${currPlayer}'s turn`;
+    _gameDisplay.textContent = `${currPlayer.player}'s turn`;
   };
 
   const _checkWinner = (col, row) => {
@@ -78,7 +104,7 @@ const manager = ((gameBoard = board) => {
       return;
     }
 
-    board.setTile(col, row, currPlayer);
+    board.setTile(col, row, currPlayer.player);
     board.refreshBoardUI();
     _movesRemaining -= 1;
 

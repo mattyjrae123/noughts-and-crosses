@@ -30,6 +30,13 @@ body {
   justify-content: space-between;
 }
 
+#modal-menu {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
 h1 {
   color: var(--green-dark);
   font-size: 4rem;

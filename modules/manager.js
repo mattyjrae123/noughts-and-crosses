@@ -95,6 +95,28 @@ const manager = (() => {
           .forEach((tile) => {
             tile.addEventListener('click', _processClick);
           });
+  
+  document.querySelector('form button')
+    .addEventListener('click', () => {
+      const player1IsAI = document.querySelector('input[name="player-1"]:checked').value === "ai";
+      const player2IsAI = document.querySelector('input[name="player-2"]:checked').value === "ai";
+
+      if (player1IsAI) {
+        PLAYER_1.isAIAgent = true;
+      } else {
+        PLAYER_1.isAIAgent = false;
+      }
+
+      if (player2IsAI) {
+        PLAYER_2.isAIAgent = true;
+      } else {
+        PLAYER_2.isAIAgent = false;
+      }
+
+      document.querySelector("#modal-menu").style.display = 'none';
+
+      resetGame();
+  });
 
   return {
     resetGame

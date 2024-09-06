@@ -94,22 +94,24 @@ h1 {
   justify-content: center;
 }
 
-#reset-btn {
+#gameboard-menu > button {
   background-color: var(--brown-light);
   border: none;
   border-radius: 50px;
   padding: 0.5rem 1.5rem;
   font-size: 1.7rem;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  flex: 1;
 }
 
-#reset-btn:hover {
+#gameboard-menu > button:hover {
   background-color: var(--brown-dark);
   transition: background-color 0.1s;
 }
 
-#reset-btn:active {
-  border: 2px solid black;
+#gameboard-menu > button:active {
+  background-color: black;
+  color: white;
 }
 
 #gameboard {

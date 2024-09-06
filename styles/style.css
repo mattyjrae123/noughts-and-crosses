@@ -43,6 +43,37 @@ body {
 
 #modal-menu > form {
   background-color: rgb(235, 235, 235);
+  width: 30rem;
+  height: 15rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#modal-title {
+  font-size: 2.5rem;
+}
+
+#modal-menu button {
+  width: 100%;
+  height: 2rem;
+  font-size: 1rem;
+  background-color: rgb(100, 255, 100);
+  border: 1px solid black;
+  border-radius: 0.5rem;
+}
+
+#modal-menu button:hover {
+  border: 2px solid black;
+}
+
+#modal-menu button:active {
+  background-color: black;
+  color: white;
 }
 
 h1 {

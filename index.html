@@ -10,7 +10,6 @@
 </head>
 
 <body>
-  <div id="modal-menu"></div>
   <h1>Noughts & Crosses</h1>
   <div id="ui-container">
     <div id="gameboard-display"></div>
@@ -36,6 +35,26 @@
   <div id="personal-links">
     <a href="https://www.linkedin.com/in/matthew-rae-786790176" target="_blank"><img src="images/linkedin-logo.png" alt="LinkedIn" height="50"></a>
     <a href="https://github.com/mattyjrae123" target="_blank"><img src="images/github-logo.png" alt="GitHub" height="50"></a>
+  </div>
+  <div id="modal-menu">
+    <form>
+      <h2>Game Settings</h2>
+      <fieldset>
+        <legend>Player 1</legend>
+        <label for="p1-human">Human</label>
+        <input type="radio" name="player-1" id="p1-human" value="human" checked>
+        <label for="p1-ai">AI</label>
+        <input type="radio" name="player-1" id="p1-ai" value="ai">
+      </fieldset>
+      <fieldset>
+        <legend>Player 2</legend>
+        <label for="p1-human">Human</label>
+        <input type="radio" name="player-2" id="p2-human" value="human" checked>
+        <label for="p1-ai">AI</label>
+        <input type="radio" name="player-2" id="p2-ai" value="ai">
+      </fieldset>
+      <button type="button">Start</button>
+    </form>
   </div>
 </body>
 

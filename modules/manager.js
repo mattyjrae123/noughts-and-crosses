@@ -50,7 +50,7 @@ const manager = (() => {
       return;
     }
 
-    if (!board.hasMovesRemaining) {
+    if (!board.hasMovesRemaining()) {
       _stopGame();
       _gameDisplay.textContent = "Game over! It's a draw!";
       return;

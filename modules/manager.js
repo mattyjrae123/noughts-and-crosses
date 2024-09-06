@@ -118,6 +118,11 @@ const manager = (() => {
       resetGame();
   });
 
+  document.querySelector('#settings-btn')
+    .addEventListener('click', () => {
+      document.querySelector("#modal-menu").style.display = 'flex';
+  });
+
   return {
     resetGame
   };

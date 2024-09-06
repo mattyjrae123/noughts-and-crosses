@@ -20,7 +20,7 @@ const manager = (() => {
 
   const PLAYER_2 = {
     player: "o",
-    isAIAgent: true
+    isAIAgent: false
   };
 
   const resetGame = () => {
@@ -96,7 +96,7 @@ const manager = (() => {
             tile.addEventListener('click', _processClick);
           });
   
-  document.querySelector('form button')
+  document.querySelector('#modal-submit')
     .addEventListener('click', () => {
       const player1IsAI = document.querySelector('input[name="player-1"]:checked').value === "ai";
       const player2IsAI = document.querySelector('input[name="player-2"]:checked').value === "ai";
@@ -116,6 +116,11 @@ const manager = (() => {
       document.querySelector("#modal-menu").style.display = 'none';
 
       resetGame();
+  });
+
+  document.querySelector('#modal-cancel')
+    .addEventListener('click', () => {
+      document.querySelector("#modal-menu").style.display = 'none';
   });
 
   document.querySelector('#settings-btn')

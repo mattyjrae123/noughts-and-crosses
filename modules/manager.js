@@ -9,6 +9,7 @@ import { AIAgent } from "./AIAgent.js";
  */
 
 const manager = (() => {
+  const AI_MOVE_DELAY = 1000;
   let _playing = false;
   let currPlayer = undefined;
   let _gameDisplay = document.querySelector('#gameboard-display');
@@ -35,8 +36,19 @@ const manager = (() => {
     _gameDisplay.textContent = `${currPlayer.player}'s turn`;
 
     if (currPlayer.isAIAgent) {
+      const startTime = Date.now();
       const move = AIAgent.getMove(board, currPlayer.player);
-      _setMove(move[0], move[1]);
+      const endTime = Date.now();
+
+      const timeDifference = endTime - startTime;
+      console.log(timeDifference);
+      if (timeDifference < AI_MOVE_DELAY) {
+        setTimeout(() => {
+          _setMove(move[0], move[1])
+        }, AI_MOVE_DELAY - timeDifference);
+      } else {
+        _setMove(move[0], move[1]);
+      }
     }
   };
 

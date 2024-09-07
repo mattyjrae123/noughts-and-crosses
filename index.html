@@ -40,20 +40,22 @@
   <div id="modal-menu">
     <form>
       <h2 id="modal-title">Game Settings</h2>
-      <fieldset>
-        <legend>Player 1</legend>
-        <label for="p1-human">Human</label>
-        <input type="radio" name="player-1" id="p1-human" value="human" checked>
-        <label for="p1-ai">AI</label>
-        <input type="radio" name="player-1" id="p1-ai" value="ai">
-      </fieldset>
-      <fieldset>
-        <legend>Player 2</legend>
-        <label for="p1-human">Human</label>
-        <input type="radio" name="player-2" id="p2-human" value="human" checked>
-        <label for="p1-ai">AI</label>
-        <input type="radio" name="player-2" id="p2-ai" value="ai">
-      </fieldset>
+      <div id="modal-fieldset-wrapper">
+        <fieldset class="modal-fieldset">
+          <legend class="modal-legend">Player 1</legend>
+          <label for="p1-human">Human</label>
+          <input type="radio" name="player-1" id="p1-human" value="human" checked>
+          <label for="p1-ai">AI</label>
+          <input type="radio" name="player-1" id="p1-ai" value="ai">
+        </fieldset>
+        <fieldset class="modal-fieldset">
+          <legend class="modal-legend">Player 2</legend>
+          <label for="p1-human">Human</label>
+          <input type="radio" name="player-2" id="p2-human" value="human" checked>
+          <label for="p1-ai">AI</label>
+          <input type="radio" name="player-2" id="p2-ai" value="ai">
+        </fieldset>
+      </div>
       <button id="modal-submit" type="button">Start</button>
       <button id="modal-cancel" type="button">Cancel</button>
     </form>

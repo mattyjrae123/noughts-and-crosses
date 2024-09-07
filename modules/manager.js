@@ -43,7 +43,7 @@ const manager = (() => {
       const endTime = Date.now();
 
       const timeDifference = endTime - startTime;
-      console.log(timeDifference);
+      
       if (timeDifference < AI_MOVE_DELAY) {
         setTimeout(() => {
           _setMove(move[0], move[1])

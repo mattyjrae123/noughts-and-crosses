@@ -10,7 +10,27 @@ const AIAgent = (() => {
   const HARD = 2;
   const IMPOSSIBLE = 3;
   
-  const getMove = (board, currPlayer) => {
+  const getMove = (board, currPlayer, difficulty) => {
+    const moves = board.getPossibleMoves();
+    console.log(difficulty);
+    switch (difficulty) {
+      case EASY:
+        if (Math.random() < 0.8) {
+          return moves[Math.floor(Math.random() * moves.length)];
+        }
+        break;
+      case MEDIUM:
+        if (Math.random() < 0.6) {
+          return moves[Math.floor(Math.random() * moves.length)];
+        }
+        break;
+      case HARD:
+        if (Math.random() < 0.2) {
+          return moves[Math.floor(Math.random() * moves.length)];
+        }
+        break;
+    }
+    
     let _, move;
     [_, move] = _minimax(board, 0, true, currPlayer);
     return move;

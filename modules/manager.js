@@ -39,7 +39,7 @@ const manager = (() => {
 
     if (currPlayer.isAIAgent) {
       const startTime = Date.now();
-      const move = AIAgent.getMove(board, currPlayer.player);
+      const move = AIAgent.getMove(board, currPlayer.player, currPlayer.difficulty);
       const endTime = Date.now();
 
       const timeDifference = endTime - startTime;
@@ -132,7 +132,6 @@ const manager = (() => {
             break;
           case "ai-impossible":
             PLAYER_1.difficulty = AIAgent.IMPOSSIBLE;
-            break;
         }
       }
 

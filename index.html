@@ -42,18 +42,24 @@
       <h2 id="modal-title">Game Settings</h2>
       <div id="modal-fieldset-wrapper">
         <fieldset class="modal-fieldset">
-          <legend class="modal-legend">Player 1</legend>
-          <label for="p1-human">Human</label>
-          <input type="radio" name="player-1" id="p1-human" value="human" checked>
-          <label for="p1-ai">AI</label>
-          <input type="radio" name="player-1" id="p1-ai" value="ai">
+          <label class="modal-label" for="p1-select">Player 1</label>
+          <select name="p1-select" id="p1-select">
+            <option value="human">Human</option>
+            <option value="ai-easy">AI (easy)</option>
+            <option value="ai-medium">AI (medium)</option>
+            <option value="ai-hard">AI (hard)</option>
+            <option value="ai-hard">AI (impossible)</option>
+          </select>
         </fieldset>
         <fieldset class="modal-fieldset">
-          <legend class="modal-legend">Player 2</legend>
-          <label for="p1-human">Human</label>
-          <input type="radio" name="player-2" id="p2-human" value="human" checked>
-          <label for="p1-ai">AI</label>
-          <input type="radio" name="player-2" id="p2-ai" value="ai">
+          <label class="modal-label" for="p2-select">Player 2</label>
+          <select name="p2-select" id="p2-select">
+            <option value="human">Human</option>
+            <option value="ai-easy">AI (easy)</option>
+            <option value="ai-medium">AI (medium)</option>
+            <option value="ai-hard">AI (hard)</option>
+            <option value="ai-hard">AI (impossible)</option>
+          </select>
         </fieldset>
       </div>
       <button id="modal-submit" type="button">Start</button>

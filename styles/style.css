@@ -43,7 +43,7 @@ body {
 
 #modal-menu > form {
   background-color: rgb(235, 235, 235);
-  width: 30rem;
+  width: 25rem;
   padding: 1rem;
   border-radius: 0.5rem;
 
@@ -91,10 +91,12 @@ body {
 
 .modal-fieldset {
   text-align: center;
-  flex: 1;
+
+  display: flex;
+  flex-direction: column;
 } 
 
-.modal-legend {
+.modal-label {
   font-size: 1.2rem;
   color: rgb(110, 110, 110);
   margin-bottom: 0.4rem;
@@ -128,6 +130,9 @@ h1 {
   flex: 1;
 }
 
+label:checked {
+  color: yellow;
+}
 #gameboard-menu > button:hover {
   background-color: var(--brown-dark);
   transition: background-color 0.1s;

@@ -16,12 +16,14 @@ const manager = (() => {
   
   const PLAYER_1 = {
     player: "x",
-    isAIAgent: false
+    isAIAgent: false,
+    difficulty: AIAgent.EASY
   };
 
   const PLAYER_2 = {
     player: "o",
-    isAIAgent: false
+    isAIAgent: false,
+    difficulty: AIAgent.EASY
   };
 
   const resetGame = () => {
@@ -110,19 +112,49 @@ const manager = (() => {
   
   document.querySelector('#modal-submit')
     .addEventListener('click', () => {
-      const player1IsAI = document.querySelector('input[name="player-1"]:checked').value === "ai";
-      const player2IsAI = document.querySelector('input[name="player-2"]:checked').value === "ai";
+      const p1Select = document.querySelector('#p1-select');
+      const p2Select = document.querySelector('#p2-select');
 
-      if (player1IsAI) {
-        PLAYER_1.isAIAgent = true;
-      } else {
+      if (p1Select.value === "human") {
         PLAYER_1.isAIAgent = false;
+      } else {
+        PLAYER_1.isAIAgent = true;
+
+        switch (p1Select.value) {
+          case "ai-easy":
+            PLAYER_1.difficulty = AIAgent.EASY;
+            break;
+          case "ai-medium":
+            PLAYER_1.difficulty = AIAgent.MEDIUM;
+            break;
+          case "ai-hard":
+            PLAYER_1.difficulty = AIAgent.HARD;
+            break;
+          case "ai-impossible":
+            PLAYER_1.difficulty = AIAgent.IMPOSSIBLE;
+            break;
+        }
       }
 
-      if (player2IsAI) {
-        PLAYER_2.isAIAgent = true;
-      } else {
+      if (p2Select.value === "human") {
         PLAYER_2.isAIAgent = false;
+      } else {
+        PLAYER_2.isAIAgent = true;
+
+        switch (p2Select.value) {
+          case "ai-easy":
+            PLAYER_2.difficulty = AIAgent.EASY;
+            break;
+          case "ai-medium":
+            PLAYER_2.difficulty = AIAgent.MEDIUM;
+            break;
+          case "ai-hard":
+            PLAYER_2.difficulty = AIAgent.HARD;
+            break;
+          case "ai-impossible":
+            PLAYER_2.difficulty = AIAgent.IMPOSSIBLE;
+            break;
+        }
       }
 
       document.querySelector("#modal-menu").style.display = 'none';

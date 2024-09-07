@@ -5,6 +5,11 @@
  * get the AI players move.
  */
 const AIAgent = (() => {
+  const EASY = 0;
+  const MEDIUM = 1;
+  const HARD = 2;
+  const IMPOSSIBLE = 3;
+  
   const getMove = (board, currPlayer) => {
     let _, move;
     [_, move] = _minimax(board, 0, true, currPlayer);
@@ -80,6 +85,10 @@ const AIAgent = (() => {
   };
 
   return {
+    EASY,
+    MEDIUM,
+    HARD,
+    IMPOSSIBLE,
     getMove,
   };
 })();
